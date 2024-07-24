@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import {Home, Landing} from "./pages"
-
+import { Home, Landing } from './pages';
+import { GlobalProvider } from './context/GlobalContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,25 +13,28 @@ const queryClient = new QueryClient({
   },
 });
 
-
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
     children: [
       {
-        index:true,
-        element:<Landing/>
-      }
+        index: true,
+        element: <Landing />,
+      },
     ],
   },
 ]);
-  const App: React.FC = () => {
-    return (
-      <QueryClientProvider client={queryClient}>
+
+const App: React.FC = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <GlobalProvider>
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    );
-  };
-  export default App;
+      </GlobalProvider>
+    </QueryClientProvider>
+  );
+};
+
+export default App;
