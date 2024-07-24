@@ -1,20 +1,18 @@
-import React from 'react'
+import React from 'react';
 import { useGlobalContext } from '../context/GlobalContext';
-import lightSrc from "../assets/svgs/icons/lightThreeBars.svg"
-import darkSrc from "../assets/svgs/icons/darkThreeBars.svg"
+import lightSrc from '../assets/svgs/icons/lightThreeBars.svg';
+import darkSrc from '../assets/svgs/icons/darkThreeBars.svg';
 import { pages } from '../assets';
 import { page } from '../assets/types';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-
-const SmallNavBar:React.FC = () => {
-      const [slelectedLink, setSelectedLink] = React.useState<string>(pages[0].id);
-
-    const { isDark } = useGlobalContext();
+const SmallNavBar: React.FC = () => {
+  const [slelectedLink, setSelectedLink] = React.useState<string>(pages[0].id);
+  const { isDark } = useGlobalContext();
   return (
-    <div className="dropdown lg:hidden">
-      <div tabIndex={0} role="button" className="btn m-1">
+    <div className="dropdown dropdown-end lg:hidden">
+      <div tabIndex={0} role="button" className="m-1">
         <img src={isDark ? darkSrc : lightSrc} alt="click" />
       </div>
       <ul
@@ -45,6 +43,6 @@ const SmallNavBar:React.FC = () => {
       </ul>
     </div>
   );
-}
+};
 
-export default SmallNavBar
+export default SmallNavBar;

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Landing :React.FC = () => {
   return (
-    <div>Landing</div>
+    <div className='mb-80'>Landing</div>
   )
 }
 
